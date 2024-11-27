@@ -52,3 +52,24 @@ article img {
   display: flex;
   flex-direction: column;
 }
+
+.app.dark {
+  background-color: darkgray;
+  color: white;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.638);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+}

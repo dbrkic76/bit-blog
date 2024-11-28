@@ -1,6 +1,8 @@
 import { URL } from "../App";
+import { useNavigate } from "react-router-dom";
 
 const Blog = ({ blog, setSingleBlog, setRefresh }) => {
+  const navigate = useNavigate();
   const { author, description, image, title, id } = blog;
 
   const shortenDescription = (description, end) => {
@@ -25,7 +27,11 @@ const Blog = ({ blog, setSingleBlog, setRefresh }) => {
 
   return (
     <div className="blog">
-      <article onClick={() => setSingleBlog(blog)}>
+      <article
+        onClick={() => {
+          navigate(`/blog/${id}`);
+        }}
+      >
         <h2>{title}</h2>
         <p>{shortenDescription(description, 10)}</p>
         <p>{author}</p>

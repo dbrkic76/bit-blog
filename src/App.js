@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SingleBlogPage from "./pages/SingleBlogPage";
 import { CreateBlogModal } from "./components/CreateBlogModal";
+import { Routes, Route } from "react-router-dom";
 
 export const URL = "https://6745ca58512ddbd807f9a880.mockapi.io/api/v1/blogs"; // adresa sa koje se kupe podaci
 
@@ -27,35 +28,51 @@ const App = () => {
   };
 
   const toggleModalOpen = () => {
-    setIsModalOpen(!isModalOpen)
-  }
+    setIsModalOpen(!isModalOpen);
+  };
 
   useEffect(() => {
     fetchAllBlogs();
   }, [refresh]);
 
-  console.log(1);
-
   return (
     <div className={`app ${theme === "light" ? "" : "dark"}`}>
-      {!singleBlog ? (
-        <>
-          <Header theme={theme} setTheme={setTheme} toggleModalOpen={toggleModalOpen} />
-          <AllBlogsPage
-            blogs={blogs}
-            setSingleBlog={setSingleBlog}
-            setRefresh={setRefresh}
-          />
-          <Footer />
-        </>
-      ) : (
-        <>
-          <Header theme={theme} setTheme={setTheme} toggleModalOpen={toggleModalOpen} />
-          <SingleBlogPage singleBlog={singleBlog} />
-          <Footer />
-        </>
-      )}
-      {isModalOpen && <CreateBlogModal />}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header
+                theme={theme}
+                setTheme={setTheme}
+                toggleModalOpen={toggleModalOpen}
+              />
+              <AllBlogsPage
+                blogs={blogs}
+                setSingleBlog={setSingleBlog}
+                setRefresh={setRefresh}
+              />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/blog/:id"
+          element={
+            <>
+              <Header
+                theme={theme}
+                setTheme={setTheme}
+                toggleModalOpen={toggleModalOpen}
+              />
+              <SingleBlogPage blogs={blogs} />
+              <Footer />
+            </>
+          }
+        />
+      </Routes>
+
+      {isModalOpen && <CreateBlogModal toggleModalOpen={toggleModalOpen} />}
     </div>
   );
 };

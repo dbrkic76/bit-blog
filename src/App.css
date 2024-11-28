@@ -70,6 +70,40 @@ article img {
 }
 .modal-content {
   background-color: white;
+  width: 30%;
   padding: 50px;
   border-radius: 10px;
+}
+.close-btn {
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  right: 8px;
+  font-size: 26px;
+  top: 8px;
+  cursor: pointer;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+form button {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  background-color: orange;
+  color: white;
+  cursor: pointer;
+}
+form input,
+form textarea {
+  border: 1px solid grey;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
 }
